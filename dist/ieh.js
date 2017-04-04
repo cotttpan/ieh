@@ -16,6 +16,12 @@ var util;
         };
     }
     util.makeIteratee = makeIteratee;
+    function makeReducer(callback) {
+        return function (acc, kv, i, src) {
+            return callback.call(null, acc, kv[1], kv[0], i, src);
+        };
+    }
+    util.makeReducer = makeReducer;
 })(util || (util = {}));
 function has(co, key) {
     return util.existy(get(co, key));
@@ -75,18 +81,9 @@ function map(co, callback, context) {
 }
 exports.map = map;
 function reduce(co, callback, init) {
-    return co.reduce(_reduce.makeReducer(callback), init);
+    return co.reduce(util.makeReducer(callback), init);
 }
 exports.reduce = reduce;
-var _reduce;
-(function (_reduce) {
-    function makeReducer(callback) {
-        return function (acc, kv, i, src) {
-            return callback.call(null, acc, kv[1], kv[0], i, src);
-        };
-    }
-    _reduce.makeReducer = makeReducer;
-})(_reduce = exports._reduce || (exports._reduce = {}));
 function toEntries(src) {
     return Object.keys(src).map((k) => [k, src[k]]);
 }
