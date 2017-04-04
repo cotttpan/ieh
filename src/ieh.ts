@@ -22,7 +22,7 @@ export function has<K, V>(co: Entries<K, V>, key: K) {
 
 export function get<K, V>(co: Entries<K, V>, key: K) {
     const results = co.find(([k]) => k === key);
-    return util.existy(results) ? results : undefined;
+    return util.existy(results) ? results![1] : undefined;
 }
 
 export function pick<K, V>(co: Entries<K, V>, keys: K[]) {

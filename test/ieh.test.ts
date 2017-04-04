@@ -9,7 +9,7 @@ test("has", t => {
 });
 
 test("get", t => {
-    t.deepEqual(ieh.get(co, 1)!, [1, "hello"]);
+    t.deepEqual(ieh.get(co, 1)!, "hello");
     t.is(ieh.get(co, 3)!, undefined);
 });
 
@@ -23,7 +23,7 @@ test("pick", t => {
 test("set", t => {
     const co2 = ieh.set(co, 2, "!");
     const co3 = ieh.set(co, 3, "!!");
-    t.deepEqual(ieh.get(co2, 2)!, [2, "!"]);
+    t.deepEqual(ieh.get(co2, 2)!, "!");
     t.true(ieh.has(co3, 3));
     t.notDeepEqual(co2, co3);
 });
