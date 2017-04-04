@@ -23,7 +23,7 @@ function has(co, key) {
 exports.has = has;
 function get(co, key) {
     const results = co.find(([k]) => k === key);
-    return util.existy(results) ? results : undefined;
+    return util.existy(results) ? results[1] : undefined;
 }
 exports.get = get;
 function pick(co, keys) {

@@ -2,7 +2,7 @@ export declare type Entries<K, V> = Entry<K, V>[];
 export declare type Entry<K, V> = [K, V];
 export declare type Iteratee<K, V, R> = (v: V, k: K, index: number, src: Entries<K, V>) => R;
 export declare function has<K, V>(co: Entries<K, V>, key: K): boolean;
-export declare function get<K, V>(co: Entries<K, V>, key: K): [K, V] | undefined;
+export declare function get<K, V>(co: Entries<K, V>, key: K): V | undefined;
 export declare function pick<K, V>(co: Entries<K, V>, keys: K[]): [K, V][];
 export declare function set<K, V>(co: Entries<K, V>, key: K, value: V): [K, V][];
 export declare function merge<K, V>(co: Entries<K, V>, src: Entries<K, V>): [K, V][];
